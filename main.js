@@ -9,11 +9,7 @@ const perguntas = [
     {
         enunciado: "Assim que vocẽ ficou com duvida sobre o que prefere comer, criamos um chat onde vocẽ consegue tirar suas duvidas, o que vocẽ prefere?",
         alternativas: [
-            {
-                texto: " Doce",
-                afirmacao: " Sentir o gosto açucarado na língua leva o cérebro a produzir dopamina, dessa forma as pessoas ficam mais felizes. ",
-            },
-            {
+            { 
                 texto: " Salgado ",
                 afirmacao: " Sentir o gosto salgado na língua leva o cérebro a produzir aldesterona, dessa forma as pessoas ficam mais felizes.",
             }
@@ -46,28 +42,28 @@ const perguntas = [
         ]
     },
     {
-        enunciado: "?",
+        enunciado: "Entretanto, para se fazer uma dieta rica em proteínas, voce prefere consumir mais chás caseiros ou prefere se neutralizar com medicamentos industrializados?",
         alternativas: [
             {
-                texto: " Texto/resposta ",
-                afirmacao: " Afirmação ",
+                texto: " Com chás caseiros ",
+                afirmacao: " Ao se fazer uma dieta com chás caseiros, irá proporcionar o aceleramento do metabolismo, diminuindo-se qualquer doenças de transmissão de inchaços pelo corpo.",
             },
             {
-                texto: " Texto/resposta ",
-                afirmacao: " Afirmação ",
+                texto: " Com medicamentos industrializados ",
+                afirmacao: " Muito bem, ao se fazer uma dieta através de medicamentos industrializados, irá proporcionar a cura de impactos associados a obesidade, que está sendo um grande fator causado pela população",
             }
         ]
     },
     {
-        enunciado: " Pergunta?",
+        enunciado: "Sendo-se assim para se manter em uma saúde totalmente de qualidade, se hidratando com líquidos que te darão mais energia e disposição ao dia a dia, voce prefere toar água ou refrigerante?",
         alternativas: [
             {
-                texto: " Texto/resposta ",
-                afirmacao: "Afirmação",
+                texto: " com refrigerante  ",
+                afirmacao: "Muito bem, se consumindo refrigerantes, irá contribuir para a melhoria do foco,atenção,e memória, reduzindo-se assim o risco de demencia",
             },
             {
-                texto: " Texto/resposta ",
-                afirmacao: " Afirmação ",
+                texto: " Consumir água ",
+                afirmacao: " Muito bem, escolha ótima, se consumir água no dia a dia cada vez mais,evita o ressecamento da pele, se ajudando-se no hidratamento das células e tornando-se com uma saúde saudáve ",
 
             }
         ]
@@ -82,7 +78,11 @@ let atual = 0;
 let perguntaAtual; 
 let historiaFinal = "";
 
-function mostraPergunta(){
+function mostraPergunta(){ 
+    if(atual >= perguntas.length){
+        mostraResultaddo();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado; 
     caixaAlternativas.textContent = "";
@@ -101,9 +101,15 @@ function moostraAlternativas(){
 
 function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal = afirmacoes;
+    historiaFinal = afirmacoes + " ";
     atual++;
-    mostraPergunta();
+    mostraPergunta(); 
+} 
+
+function mostraResultaddo(){
+    caixaPerguntas.textContent = "Em 2024"
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
 }
 mostraPergunta();
 
